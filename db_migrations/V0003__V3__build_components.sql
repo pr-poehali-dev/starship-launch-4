@@ -1,0 +1,1 @@
+CREATE TABLE build_components (id SERIAL PRIMARY KEY, build_id INTEGER NOT NULL REFERENCES builds(id), component_id INTEGER NOT NULL REFERENCES components(id), category VARCHAR(50) NOT NULL);

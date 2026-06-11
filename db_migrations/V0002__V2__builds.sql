@@ -1,0 +1,1 @@
+CREATE TABLE builds (id SERIAL PRIMARY KEY, user_id VARCHAR(100), title VARCHAR(255) NOT NULL DEFAULT 'Моя сборка', is_public BOOLEAN NOT NULL DEFAULT FALSE, share_token VARCHAR(64) UNIQUE, total_price INTEGER NOT NULL DEFAULT 0, compatibility_status VARCHAR(20) NOT NULL DEFAULT 'unchecked', created_at TIMESTAMP DEFAULT NOW(), updated_at TIMESTAMP DEFAULT NOW());

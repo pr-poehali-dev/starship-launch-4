@@ -1,0 +1,20 @@
+{
+  "tests": [
+    {
+      "name": "Get all components",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {"total": 38},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Filter by category cpu",
+      "method": "GET",
+      "path": "/?category=cpu",
+      "expectedStatus": 200,
+      "expectedBody": {"total": 7},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

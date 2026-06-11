@@ -1,9 +1,13 @@
 import { useState } from "react"
+import { useNavigate, useLocation } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import Icon from "@/components/ui/icon"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const isHome = location.pathname === '/'
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-[9999] bg-black/95 backdrop-blur-md border-b border-red-500/20">
@@ -19,21 +23,34 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#features" className="font-geist text-white hover:text-red-500 transition-colors duration-200">
-                Возможности
-              </a>
-              <a href="#how-it-works" className="font-geist text-white hover:text-red-500 transition-colors duration-200">
-                Как работает
-              </a>
-              <a href="#faq" className="font-geist text-white hover:text-red-500 transition-colors duration-200">
-                Вопросы
-              </a>
+              <button
+                onClick={() => navigate('/catalog')}
+                className={`font-geist transition-colors duration-200 ${location.pathname === '/catalog' ? 'text-red-500' : 'text-white hover:text-red-500'}`}
+              >
+                Каталог
+              </button>
+              <button
+                onClick={() => navigate('/configurator')}
+                className={`font-geist transition-colors duration-200 ${location.pathname === '/configurator' ? 'text-red-500' : 'text-white hover:text-red-500'}`}
+              >
+                Конфигуратор
+              </button>
+              {isHome && (
+                <a href="#faq" className="font-geist text-white hover:text-red-500 transition-colors duration-200">
+                  Вопросы
+                </a>
+              )}
             </div>
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-red-500 hover:bg-red-600 text-white font-geist border-0">Создать сборку</Button>
+            <Button
+              className="bg-red-500 hover:bg-red-600 text-white font-geist border-0"
+              onClick={() => navigate('/configurator')}
+            >
+              Создать сборку
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -51,29 +68,32 @@ export function Navbar() {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-black/98 border-t border-red-500/20">
-              <a
-                href="#features"
-                className="block px-3 py-2 font-geist text-white hover:text-red-500 transition-colors duration-200"
-                onClick={() => setIsOpen(false)}
+              <button
+                className="block w-full text-left px-3 py-2 font-geist text-white hover:text-red-500 transition-colors duration-200"
+                onClick={() => { navigate('/catalog'); setIsOpen(false) }}
               >
-                Возможности
-              </a>
-              <a
-                href="#how-it-works"
-                className="block px-3 py-2 font-geist text-white hover:text-red-500 transition-colors duration-200"
-                onClick={() => setIsOpen(false)}
+                Каталог
+              </button>
+              <button
+                className="block w-full text-left px-3 py-2 font-geist text-white hover:text-red-500 transition-colors duration-200"
+                onClick={() => { navigate('/configurator'); setIsOpen(false) }}
               >
-                Как работает
-              </a>
-              <a
-                href="#faq"
-                className="block px-3 py-2 font-geist text-white hover:text-red-500 transition-colors duration-200"
-                onClick={() => setIsOpen(false)}
-              >
-                Вопросы
-              </a>
+                Конфигуратор
+              </button>
+              {isHome && (
+                <a
+                  href="#faq"
+                  className="block px-3 py-2 font-geist text-white hover:text-red-500 transition-colors duration-200"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Вопросы
+                </a>
+              )}
               <div className="px-3 py-2">
-                <Button className="w-full bg-red-500 hover:bg-red-600 text-white font-geist border-0">
+                <Button
+                  className="w-full bg-red-500 hover:bg-red-600 text-white font-geist border-0"
+                  onClick={() => { navigate('/configurator'); setIsOpen(false) }}
+                >
                   Создать сборку
                 </Button>
               </div>
