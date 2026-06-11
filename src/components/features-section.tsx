@@ -1,53 +1,54 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Icon from "@/components/ui/icon"
 
 const features = [
   {
-    title: "Адаптивная нейрообработка",
-    description: "Самооптимизирующиеся алгоритмы, которые обучаются на нейронных паттернах и улучшают интерпретацию сигналов.",
-    icon: "brain",
-    badge: "ИИ",
+    title: "Проверка совместимости",
+    description: "Автоматический анализ совместимости сокетов, чипсетов, типов ОЗУ и габаритов — конфликты подсвечиваются мгновенно.",
+    icon: "ShieldCheck",
+    badge: "Авто",
   },
   {
-    title: "Медицинская защита",
-    description: "Шифрование по стандартам FDA со сквозной защитой конфиденциальных нейронных данных.",
-    icon: "lock",
-    badge: "Сертификат",
+    title: "Каталог комплектующих",
+    description: "Полная база процессоров, видеокарт, материнских плат, ОЗУ, накопителей, БП, корпусов и систем охлаждения.",
+    icon: "Database",
+    badge: "База",
   },
   {
-    title: "Интуитивное управление",
-    description: "Естественная трансляция мыслей в действия с откликом менее миллисекунды и точностью 99,7%.",
-    icon: "globe",
-    badge: "Точность",
+    title: "Пошаговый конфигуратор",
+    description: "Интуитивный интерфейс сборки: выбирайте компоненты по шагам или в свободном режиме с подсказками на каждом этапе.",
+    icon: "Settings2",
+    badge: "Удобно",
   },
   {
-    title: "Предиктивная калибровка",
-    description: "ML-модели, которые предугадывают намерения пользователя и оптимизируют нейронные пути.",
-    icon: "zap",
-    badge: "Умный",
+    title: "Расчёт мощности",
+    description: "Суммарное энергопотребление сборки сравнивается с мощностью БП — никаких сюрпризов при запуске.",
+    icon: "Zap",
+    badge: "TDP",
   },
   {
-    title: "Биометрическая интеграция",
-    description: "Бесшовная синхронизация с мониторингом жизненных показателей для контроля здоровья.",
-    icon: "link",
-    badge: "Связь",
+    title: "Сохранение и экспорт",
+    description: "Сохраняйте сборки в личном кабинете, делитесь ссылкой или экспортируйте спецификацию в PDF и Excel.",
+    icon: "Share2",
+    badge: "Экспорт",
   },
   {
-    title: "Поддержка XR",
-    description: "Нативная совместимость с AR/VR-средами для терапевтических и рабочих приложений.",
-    icon: "target",
-    badge: "XR Ready",
+    title: "Отчёты и рекомендации",
+    description: "Детальный отчёт по совместимости, выявленные конфликты и конкретные рекомендации по замене компонентов.",
+    icon: "FileText",
+    badge: "Отчёт",
   },
 ]
 
 export function FeaturesSection() {
   return (
-    <section className="py-24 px-6 bg-background">
+    <section id="features" className="py-24 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4 font-sans">Возможности нового поколения</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4 font-sans">Всё для идеальной сборки</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Почувствуйте будущее с технологиями, которые переопределяют возможное
+            Умный конфигуратор, который проверяет совместимость в реальном времени и не даёт ошибиться с выбором
           </p>
         </div>
 
@@ -60,14 +61,7 @@ export function FeaturesSection() {
             >
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-3xl">
-                    {feature.icon === "brain" && "&#129504;"}
-                    {feature.icon === "lock" && "&#128274;"}
-                    {feature.icon === "globe" && "&#127760;"}
-                    {feature.icon === "zap" && "&#9889;"}
-                    {feature.icon === "link" && "&#128279;"}
-                    {feature.icon === "target" && "&#127919;"}
-                  </span>
+                  <Icon name={feature.icon} size={32} className="text-red-500" fallback="Star" />
                   <Badge variant="secondary" className="bg-accent text-accent-foreground">
                     {feature.badge}
                   </Badge>
